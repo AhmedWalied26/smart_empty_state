@@ -9,6 +9,9 @@ topics:
   - ui
   - reusable
 
+homepage: https://github.com/AhmedWalied26/smart_empty_state
+repository: https://github.com/AhmedWalied26/smart_empty_state
+
 environment:
   sdk: ^3.13.2
   flutter: ">=3.0.0"

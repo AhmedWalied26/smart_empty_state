@@ -2,10 +2,28 @@
 
 A customizable and reusable empty state widget for Flutter applications.
 
-[![pub package](https://img.shields.io/pub/v/smart_empty_state.svg)](https://pub.dev/packages/smart_empty_state)
-[![popularity](https://img.shields.io/pub/popularity/smart_empty_state)](https://pub.dev/packages/smart_empty_state)
-[![likes](https://img.shields.io/pub/likes/smart_empty_state)](https://pub.dev/packages/smart_empty_state)
-[![pub points](https://img.shields.io/pub/points/smart_empty_state)](https://pub.dev/packages/smart_empty_state)
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/AhmedWalied26/smart_empty_state/main/assets/demo.gif"
+    alt="Smart Empty State Demo"
+    width="320"
+  />
+</p>
+
+<p align="center">
+  <a href="https://pub.dev/packages/smart_empty_state">
+    <img src="https://img.shields.io/pub/v/smart_empty_state.svg" alt="pub package">
+  </a>
+  <a href="https://pub.dev/packages/smart_empty_state">
+    <img src="https://img.shields.io/pub/popularity/smart_empty_state" alt="popularity">
+  </a>
+  <a href="https://pub.dev/packages/smart_empty_state">
+    <img src="https://img.shields.io/pub/likes/smart_empty_state" alt="likes">
+  </a>
+  <a href="https://pub.dev/packages/smart_empty_state">
+    <img src="https://img.shields.io/pub/points/smart_empty_state" alt="pub points">
+  </a>
+</p>
 
 `smart_empty_state` provides ready-to-use empty and error states with simple customization options for icons, titles, messages, actions, and styling.
 
@@ -214,12 +232,12 @@ SmartEmptyState(
 
 ## Supported Types
 
-| Type                              | Description                    |
-| --------------------------------- | ------------------------------ |
-| `EmptyStateType.noData`           | No data available              |
-| `EmptyStateType.searchNotFound`   | Search returned no results     |
-| `EmptyStateType.noInternet`       | No internet connection         |
-| `EmptyStateType.error`            | Something went wrong           |
+| Type | Description |
+| --- | --- |
+| `EmptyStateType.noData` | No data available |
+| `EmptyStateType.searchNotFound` | Search returned no results |
+| `EmptyStateType.noInternet` | No internet connection |
+| `EmptyStateType.error` | Something went wrong |
 | `EmptyStateType.permissionDenied` | Required permission was denied |
 
 ---

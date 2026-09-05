@@ -1,3 +1,17 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+- Initial release.
+- Added customizable empty state widget.
+- Added built-in empty state types:
+  - No data
+  - Search not found
+  - No internet connection
+  - Error
+  - Permission denied
+- Added custom configurations for icons, titles, messages, and actions.
+- Added customizable theme and styling options.
+- Added responsive layout support.

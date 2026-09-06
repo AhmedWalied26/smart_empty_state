@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.0
+
+- Renamed `EmptyStateConfig` to `EmptyStateOptions`.
+- Renamed the `SmartEmptyState` parameter from `config` to `options`.
+- Updated documentation and examples to use `EmptyStateOptions`.
+
 ## 0.0.1
 
 - Initial release.

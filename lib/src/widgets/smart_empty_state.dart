@@ -1,154 +1,96 @@
 import 'package:flutter/material.dart';
 
-import '../config/empty_state_defaults.dart';
+import '../defaults/empty_state_defaults.dart';
 import '../enums/empty_state_type.dart';
-import '../models/empty_state_config.dart';
+import '../models/empty_state_options.dart';
 import '../themes/smart_empty_state_theme.dart';
 
 class SmartEmptyState extends StatelessWidget {
   final EmptyStateType type;
-  final EmptyStateConfig? config;
+  final EmptyStateOptions? options;
   final VoidCallback? onAction;
   final SmartEmptyStateTheme? theme;
 
   const SmartEmptyState({
     super.key,
     required this.type,
-    this.config,
+    this.options,
     this.onAction,
     this.theme,
   });
 
   @override
   Widget build(BuildContext context) {
-    final defaultConfig = EmptyStateDefaults.get(type);
-
-    final currentConfig = defaultConfig.copyWith(
-      icon: config?.icon,
-      title: config?.title,
-      message: config?.message,
-      actionText: config?.actionText,
-      onAction: config?.onAction,
+    final defaultOptions = EmptyStateDefaults.get(type);
+    final currentOptions = defaultOptions.copyWith(
+      icon: options?.icon,
+      title: options?.title,
+      message: options?.message,
+      actionText: options?.actionText,
+      onAction: options?.onAction,
     );
-
-    final emptyStateTheme = theme ?? const SmartEmptyStateTheme();
-
-    final children = <Widget>[];
-
-    if (currentConfig.icon != null) {
-      children.add(_buildIcon(context, currentConfig, emptyStateTheme));
-    }
-
-    if (currentConfig.title != null) {
-      if (children.isNotEmpty) {
-        children.add(const SizedBox(height: 24));
-      }
-
-      children.add(_buildTitle(context, currentConfig, emptyStateTheme));
-    }
-
-    if (currentConfig.message != null) {
-      if (children.isNotEmpty) {
-        children.add(SizedBox(height: emptyStateTheme.titleMessageSpacing));
-      }
-
-      children.add(_buildMessage(context, currentConfig, emptyStateTheme));
-    }
-
-    if (currentConfig.actionText != null) {
-      if (children.isNotEmpty) {
-        children.add(SizedBox(height: emptyStateTheme.messageActionSpacing));
-      }
-
-      children.add(_buildAction(context, currentConfig));
-    }
-
+    final stateTheme = theme ?? const SmartEmptyStateTheme();
+    final colorScheme = Theme.of(context).colorScheme;
     return Center(
       child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: emptyStateTheme.horizontalPadding,
+        padding: EdgeInsets.symmetric(horizontal: stateTheme.horizontalPadding),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (currentOptions.icon != null)
+              Container(
+                width: stateTheme.iconContainerSize,
+                height: stateTheme.iconContainerSize,
+                decoration: BoxDecoration(
+                  color:
+                      stateTheme.iconBackgroundColor ??
+                      colorScheme.surfaceContainerHighest,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  currentOptions.icon,
+                  size: stateTheme.iconSize,
+                  color: stateTheme.iconColor ?? colorScheme.primary,
+                ),
+              ),
+            if (currentOptions.icon != null && currentOptions.title != null)
+              const SizedBox(height: 24),
+            if (currentOptions.title != null)
+              Text(
+                currentOptions.title!,
+                textAlign: TextAlign.center,
+                style:
+                    stateTheme.titleStyle ??
+                    Theme.of(context).textTheme.titleLarge
+                        ?.copyWith(fontWeight: FontWeight.w600),
+              ),
+            if (currentOptions.title != null && currentOptions.message != null)
+              SizedBox(height: stateTheme.titleMessageSpacing),
+            if (currentOptions.message != null)
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxWidth: stateTheme.maxMessageWidth,
+                ),
+                child: Text(
+                  currentOptions.message!,
+                  textAlign: TextAlign.center,
+                  style:
+                      stateTheme.messageStyle ??
+                      Theme.of(context).textTheme.bodyMedium
+                          ?.copyWith(color: colorScheme.onSurfaceVariant),
+                ),
+              ),
+            if (currentOptions.message != null &&
+                currentOptions.actionText != null)
+              SizedBox(height: stateTheme.messageActionSpacing),
+            if (currentOptions.actionText != null)
+              ElevatedButton(
+                onPressed: onAction ?? currentOptions.onAction,
+                child: Text(currentOptions.actionText!),
+              ),
+          ],
         ),
-        child: Column(mainAxisSize: MainAxisSize.min, children: children),
       ),
-    );
-  }
-
-  Widget _buildIcon(
-    BuildContext context,
-    EmptyStateConfig config,
-    SmartEmptyStateTheme theme,
-  ) {
-    if (config.icon == null) {
-      return const SizedBox.shrink();
-    }
-
-    final colorScheme = Theme.of(context).colorScheme;
-
-    return Container(
-      width: theme.iconContainerSize,
-      height: theme.iconContainerSize,
-      decoration: BoxDecoration(
-        color: theme.iconBackgroundColor ?? colorScheme.surfaceContainerHighest,
-        shape: BoxShape.circle,
-      ),
-      child: Icon(
-        config.icon,
-        size: theme.iconSize,
-        color: theme.iconColor ?? colorScheme.primary,
-      ),
-    );
-  }
-
-  Widget _buildTitle(
-    BuildContext context,
-    EmptyStateConfig config,
-    SmartEmptyStateTheme theme,
-  ) {
-    if (config.title == null) {
-      return const SizedBox.shrink();
-    }
-
-    return Text(
-      config.title!,
-      textAlign: TextAlign.center,
-      style:
-          theme.titleStyle ??
-          Theme.of(context).textTheme.titleLarge
-              ?.copyWith(fontWeight: FontWeight.w600),
-    );
-  }
-
-  Widget _buildMessage(
-    BuildContext context,
-    EmptyStateConfig config,
-    SmartEmptyStateTheme theme,
-  ) {
-    if (config.message == null) {
-      return const SizedBox.shrink();
-    }
-
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: theme.maxMessageWidth),
-      child: Text(
-        config.message!,
-        textAlign: TextAlign.center,
-        style:
-            theme.messageStyle ??
-            Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-      ),
-    );
-  }
-
-  Widget _buildAction(BuildContext context, EmptyStateConfig config) {
-    if (config.actionText == null) {
-      return const SizedBox.shrink();
-    }
-
-    return ElevatedButton(
-      onPressed: onAction ?? config.onAction,
-      child: Text(config.actionText!),
     );
   }
 }

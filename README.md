@@ -147,12 +147,12 @@ SmartEmptyState(
 
 ## Custom Configuration
 
-You can customize the default state using `EmptyStateConfig`:
+You can customize the default state using `EmptyStateOptions`:
 
 ```dart
 SmartEmptyState(
   type: EmptyStateType.noData,
-  config: EmptyStateConfig(
+  options: EmptyStateOptions(
     icon: Icons.favorite_outline,
     title: 'No Favorites',
     message: 'You have not added any favorites yet.',
@@ -175,12 +175,12 @@ You can customize:
 
 ## Custom Action
 
-You can define the action callback directly inside `EmptyStateConfig`:
+You can define the action callback directly inside `EmptyStateOptions`:
 
 ```dart
 SmartEmptyState(
   type: EmptyStateType.noInternet,
-  config: EmptyStateConfig(
+  options: EmptyStateOptions(
     actionText: 'Retry',
     onAction: () {
       // Retry request

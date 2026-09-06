@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class EmptyStateConfig {
+class EmptyStateOptions {
   final IconData? icon;
   final String? title;
   final String? message;
   final String? actionText;
   final VoidCallback? onAction;
 
-  const EmptyStateConfig({
+  const EmptyStateOptions({
     this.icon,
     this.title,
     this.message,
@@ -15,14 +15,14 @@ class EmptyStateConfig {
     this.onAction,
   });
 
-  EmptyStateConfig copyWith({
+  EmptyStateOptions copyWith({
     IconData? icon,
     String? title,
     String? message,
     String? actionText,
     VoidCallback? onAction,
   }) {
-    return EmptyStateConfig(
+    return EmptyStateOptions(
       icon: icon ?? this.icon,
       title: title ?? this.title,
       message: message ?? this.message,

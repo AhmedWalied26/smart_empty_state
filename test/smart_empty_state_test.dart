@@ -43,7 +43,7 @@ void main() {
   testWidgets('should display custom empty state configuration', (
     tester,
   ) async {
-    const config = EmptyStateConfig(
+    const options = EmptyStateOptions(
       icon: Icons.favorite,
       title: 'Nothing Here',
       message: 'Your favorites are empty.',
@@ -53,7 +53,7 @@ void main() {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(
-          body: SmartEmptyState(type: EmptyStateType.noData, config: config),
+          body: SmartEmptyState(type: EmptyStateType.noData, options: options),
         ),
       ),
     );

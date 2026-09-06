@@ -1,6 +1,6 @@
 name: smart_empty_state
 description: A customizable and responsive empty state widget for Flutter apps.
-version: 0.0.1
+version: 0.1.0
 
 topics:
   - flutter

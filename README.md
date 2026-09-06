@@ -53,7 +53,7 @@ Add `smart_empty_state` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_empty_state: ^0.0.1
+  smart_empty_state: ^0.1.0
 ```
 
 Then run:

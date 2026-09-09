@@ -64,7 +64,7 @@ void main() {
     expect(find.byIcon(Icons.favorite), findsOneWidget);
   });
   testWidgets('should apply custom theme correctly', (tester) async {
-    const theme = SmartEmptyStateTheme(
+    const theme = EmptyStateTheme(
       iconContainerSize: 120,
       iconSize: 60,
       horizontalPadding: 32,

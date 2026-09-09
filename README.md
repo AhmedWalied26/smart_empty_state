@@ -53,7 +53,7 @@ Add `smart_empty_state` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_empty_state: ^0.1.0
+  smart_empty_state: ^0.1.1
 ```
 
 Then run:
@@ -145,7 +145,7 @@ SmartEmptyState(
 
 ---
 
-## Custom Configuration
+## Custom Options
 
 You can customize the default state using `EmptyStateOptions`:
 
@@ -193,19 +193,66 @@ SmartEmptyState(
 
 ## Custom Theme
 
-Customize the appearance using `SmartEmptyStateTheme`:
+Customize the appearance using `EmptyStateTheme`:
 
 ```dart
 SmartEmptyState(
   type: EmptyStateType.noData,
-  theme: SmartEmptyStateTheme(
+  theme: EmptyStateTheme(
     iconContainerSize: 120,
     iconSize: 60,
+    iconContainerRadius: 48,
+    buttonRadius: 16,
     horizontalPadding: 32,
     maxMessageWidth: 300,
+    titleMessageSpacing: 12,
+    messageActionSpacing: 28,
+    buttonHorizontalPadding: 24,
+    buttonVerticalPadding: 14,
+    buttonBorderWidth: 1,
+    buttonElevation: 2,
+    iconBackgroundColor: Colors.blue.shade50,
+    buttonBackgroundColor: Colors.blue,
+    iconColor: Colors.blue,
+    buttonBorderColor: Colors.blue,
+    titleStyle: const TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+    ),
+    messageStyle: const TextStyle(
+      fontSize: 16,
+    ),
+    actionTextStyle: const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+    ),
   ),
 )
 ```
+
+### Theme Options
+
+`EmptyStateTheme` lets you customize the size, spacing, colors, and text styles of the empty state.
+
+- `iconContainerSize`: Size of the icon container.
+- `iconSize`: Size of the icon.
+- `iconContainerRadius`: Radius of the icon container.
+- `buttonRadius`: Radius of the action button.
+- `horizontalPadding`: Horizontal padding around the empty state.
+- `maxMessageWidth`: Maximum width of the message.
+- `titleMessageSpacing`: Space between the title and message.
+- `messageActionSpacing`: Space between the message and action button.
+- `buttonHorizontalPadding`: Horizontal padding inside the action button.
+- `buttonVerticalPadding`: Vertical padding inside the action button.
+- `buttonBorderWidth`: Width of the action button border.
+- `buttonElevation`: Elevation of the action button.
+- `iconBackgroundColor`: Background color of the icon container.
+- `buttonBackgroundColor`: Background color of the action button.
+- `iconColor`: Color of the icon.
+- `buttonBorderColor`: Border color of the action button.
+- `titleStyle`: Text style used for the title.
+- `messageStyle`: Text style used for the message.
+- `actionTextStyle`: Text style used for the action button text.
 
 ### Custom Colors and Text Styles
 
@@ -214,15 +261,21 @@ You can also customize colors and text styles:
 ```dart
 SmartEmptyState(
   type: EmptyStateType.noData,
-  theme: SmartEmptyStateTheme(
+  theme: EmptyStateTheme(
     iconBackgroundColor: Colors.blue.shade50,
     iconColor: Colors.blue,
+    buttonBackgroundColor: Colors.blue,
+    buttonBorderColor: Colors.blue,
     titleStyle: const TextStyle(
       fontSize: 22,
       fontWeight: FontWeight.bold,
     ),
     messageStyle: const TextStyle(
       fontSize: 16,
+    ),
+    actionTextStyle: const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
     ),
   ),
 )

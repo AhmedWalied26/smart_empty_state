@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import '../defaults/empty_state_defaults.dart';
 import '../enums/empty_state_type.dart';
 import '../models/empty_state_options.dart';
-import '../themes/smart_empty_state_theme.dart';
+import '../themes/empty_state_theme.dart';
 
 class SmartEmptyState extends StatelessWidget {
   final EmptyStateType type;
   final EmptyStateOptions? options;
   final VoidCallback? onAction;
-  final SmartEmptyStateTheme? theme;
+  final EmptyStateTheme? theme;
 
   const SmartEmptyState({
     super.key,
@@ -29,7 +29,7 @@ class SmartEmptyState extends StatelessWidget {
       actionText: options?.actionText,
       onAction: options?.onAction,
     );
-    final stateTheme = theme ?? const SmartEmptyStateTheme();
+    final stateTheme = theme ?? const EmptyStateTheme();
     final colorScheme = Theme.of(context).colorScheme;
     return Center(
       child: Padding(
@@ -45,7 +45,9 @@ class SmartEmptyState extends StatelessWidget {
                   color:
                       stateTheme.iconBackgroundColor ??
                       colorScheme.surfaceContainerHighest,
-                  shape: BoxShape.circle,
+                  borderRadius: BorderRadius.circular(
+                    stateTheme.iconContainerRadius,
+                  ),
                 ),
                 child: Icon(
                   currentOptions.icon,
@@ -85,8 +87,28 @@ class SmartEmptyState extends StatelessWidget {
               SizedBox(height: stateTheme.messageActionSpacing),
             if (currentOptions.actionText != null)
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  elevation: stateTheme.buttonElevation,
+                  side: BorderSide(
+                    color: stateTheme.buttonBorderColor,
+                    width: stateTheme.buttonBorderWidth,
+                  ),
+                  padding: EdgeInsets.symmetric(
+                    vertical: stateTheme.buttonVerticalPadding,
+                    horizontal: stateTheme.buttonHorizontalPadding,
+                  ),
+                  backgroundColor: stateTheme.buttonBackgroundColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                      stateTheme.buttonRadius,
+                    ),
+                  ),
+                ),
                 onPressed: onAction ?? currentOptions.onAction,
-                child: Text(currentOptions.actionText!),
+                child: Text(
+                  currentOptions.actionText!,
+                  style: stateTheme.actionTextStyle,
+                ),
               ),
           ],
         ),

@@ -1,3 +1,4 @@
+/// A customizable and reusable empty state widget for Flutter applications.
 library;
 
 export 'src/enums/empty_state_type.dart';

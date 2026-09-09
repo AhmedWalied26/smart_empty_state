@@ -5,12 +5,21 @@ import '../enums/empty_state_type.dart';
 import '../models/empty_state_options.dart';
 import '../themes/empty_state_theme.dart';
 
+/// A customizable widget for displaying empty states.
 class SmartEmptyState extends StatelessWidget {
+  /// The type of empty state to display.
   final EmptyStateType type;
+
+  /// Optional values used to customize the default state.
   final EmptyStateOptions? options;
+
+  /// The callback called when the action button is pressed.
   final VoidCallback? onAction;
+
+  /// The theme used to customize the appearance of the widget.
   final EmptyStateTheme? theme;
 
+  /// Creates a smart empty state widget.
   const SmartEmptyState({
     super.key,
     required this.type,
@@ -22,6 +31,7 @@ class SmartEmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultOptions = EmptyStateDefaults.get(type);
+
     final currentOptions = defaultOptions.copyWith(
       icon: options?.icon,
       title: options?.title,
@@ -29,8 +39,10 @@ class SmartEmptyState extends StatelessWidget {
       actionText: options?.actionText,
       onAction: options?.onAction,
     );
+
     final stateTheme = theme ?? const EmptyStateTheme();
     final colorScheme = Theme.of(context).colorScheme;
+
     return Center(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: stateTheme.horizontalPadding),
@@ -45,9 +57,7 @@ class SmartEmptyState extends StatelessWidget {
                   color:
                       stateTheme.iconBackgroundColor ??
                       colorScheme.surfaceContainerHighest,
-                  borderRadius: BorderRadius.circular(
-                    stateTheme.iconContainerRadius,
-                  ),
+                  shape: BoxShape.circle,
                 ),
                 child: Icon(
                   currentOptions.icon,

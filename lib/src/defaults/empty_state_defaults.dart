@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../enums/empty_state_type.dart';
 import '../models/empty_state_options.dart';
 
+/// Provides the default options for each empty state type.
 class EmptyStateDefaults {
+  /// Returns the default options for the given empty state type.
   static EmptyStateOptions get(EmptyStateType type) {
     switch (type) {
       case EmptyStateType.noData:

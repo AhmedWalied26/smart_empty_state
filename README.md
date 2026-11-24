@@ -53,7 +53,7 @@ Add `smart_empty_state` to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  smart_empty_state: ^0.1.1
+  smart_empty_state: ^0.2.0
 ```
 
 Then run:
@@ -61,6 +61,8 @@ Then run:
 ```bash
 flutter pub get
 ```
+
+This package uses the standalone [`material_ui`](https://pub.dev/packages/material_ui) package and requires Flutter 3.47 or newer.
 
 ---
 

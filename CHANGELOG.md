@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.0
+
+* Migrated from the deprecated `package:flutter/material.dart` to the standalone `package:material_ui/material_ui.dart`, following Flutter 3.50.
+* Added `material_ui` as a dependency (`^1.0.0`).
+* Raised the minimum Flutter version to 3.47.0, the first release compatible with `material_ui`.
+* No changes to the public API.
+
 ## 0.1.1
 
 * Added button customization options to `EmptyStateTheme`.

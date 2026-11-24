@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../enums/empty_state_type.dart';
 import '../models/empty_state_options.dart';
